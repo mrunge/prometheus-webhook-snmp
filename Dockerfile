@@ -1,10 +1,9 @@
-FROM docker.io/centos:centos8
-MAINTAINER mrunge
+FROM registry.access.redhat.com/ubi8:8.2
 
 USER root
 
-RUN dnf -y update
-RUN dnf -y install centos-release-opstools
+COPY build/repos/opstools.repo /etc/yum.repos.d/opstools.repo
+
 RUN dnf -y install python3-cherrypy python3-PyYAML python3-pysnmp \
                    python3-dateutil python3-click git \
                    prometheus-webhook-snmp \
@@ -23,4 +22,3 @@ CMD exec /usr/bin/prometheus-webhook-snmp --debug --snmp-port=$SNMP_PORT \
   --snmp-host=$SNMP_HOST --snmp-community=$SNMP_COMMUNITY \
   --alert-oid-label=$ALERT_OID_LABEL run
 
-# buildah build-using-dockerfile -t "mrunge/prometheus-webhook-snmp" .

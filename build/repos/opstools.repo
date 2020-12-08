@@ -1,0 +1,8 @@
+[centos-opstools]
+name=CentOS-8 - OpsTools - collectd
+mirrorlist=http://mirrorlist.centos.org/?arch=$basearch&release=$releasever&repo=opstools-collectd-5
+#baseurl=http://mirror.centos.org/$contentdir/$releasever/opstools/$basearch/collectd-5/
+gpgcheck=1
+enabled=1
+skip_if_unavailable=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-OpsTools
