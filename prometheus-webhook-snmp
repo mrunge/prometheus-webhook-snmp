@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+import sys
+
+from prometheus_webhook_snmp import prometheus_webhook_snmp
+
+
+if __name__ == "__main__":
+    sys.exit(prometheus_webhook_snmp.cli())  # pylint: disable=no-value-for-parameter
